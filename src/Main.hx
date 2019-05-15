@@ -3,6 +3,8 @@ package src;
 import sys.io.Process;
 
 class Main {
+    private static var input = Sys.stdin();
+
     public static function main()
     {
         var dirtyBranches:Array<String> = new Process("git", ["branch"]).stdout
@@ -13,11 +15,12 @@ class Main {
         var currentBranchRegexp:EReg = ~/\*/;
         var cleanBranches:Array<Dynamic> = [];
 
-        for (branch in dirtyBranches) {
+        for (dirtyBranch in dirtyBranches) {
+            var branch = StringTools.trim(dirtyBranch);
             if (
-				branch == "master" || 
-				branch == "" || 
-				currentBranchRegexp.match(branch) 
+				dirtyBranch == "master" ||
+				dirtyBranch == "" ||
+				currentBranchRegexp.match(dirtyBranch)
 			) {
                 continue;
             }
@@ -27,10 +30,12 @@ class Main {
 
 
 		for (cleanBranch in cleanBranches) {
-			var lastBranchCommit = new Process("git", ["log", "-pretty:format\"%ad\"", "-1", cleanBranch.branch]).stdout.readAll().toString();
-			trace(cleanBranch.branch + ": " + lastBranchCommit");
-		}
+			var lastBranchCommit = new Process("git", ["log", "--pretty=format:\"%ad\"", "-1", cleanBranch.branch]).stdout.readAll().toString();
 
-        trace(dirtyBranches);
+			Sys.print("[BRANCH]: " + cleanBranch.branch + "\n");
+			Sys.print("[LAST_UPDATE]: " + lastBranchCommit + "\n");
+			Sys.print("Delete this branch? [Y/N]: ");
+			var userInput = input.readLine();
+		}
     }
 }
