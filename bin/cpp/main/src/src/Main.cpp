@@ -4,11 +4,23 @@
 #ifndef INCLUDED_haxe_Log
 #include <haxe/Log.h>
 #endif
+#ifndef INCLUDED_haxe_io_Bytes
+#include <haxe/io/Bytes.h>
+#endif
+#ifndef INCLUDED_haxe_io_Input
+#include <haxe/io/Input.h>
+#endif
 #ifndef INCLUDED_src_Main
 #include <src/Main.h>
 #endif
+#ifndef INCLUDED_sys_io_Process
+#include <sys/io/Process.h>
+#endif
 
-HX_LOCAL_STACK_FRAME(_hx_pos_3cb1ff7e3af8b400_6_main,"src.Main","main",0xed2a5664,"src.Main.main","Main.hx",6,0x087e5c05)
+HX_LOCAL_STACK_FRAME(_hx_pos_3cb1ff7e3af8b400_7_main,"src.Main","main",0xed2a5664,"src.Main.main","Main.hx",7,0x087e5c05)
+static const ::String _hx_array_data_7b2af223_1[] = {
+	HX_("branch",a2,fe,18,13),
+};
 namespace src{
 
 void Main_obj::__construct() { }
@@ -29,8 +41,9 @@ bool Main_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void Main_obj::main(){
-            	HX_STACKFRAME(&_hx_pos_3cb1ff7e3af8b400_6_main)
-HXDLIN(   6)		::haxe::Log_obj::trace(HX_("Hello world!",fd,48,07,3c),hx::SourceInfo(HX_("Main.hx",05,5c,7e,08),6,HX_("src.Main",23,f2,2a,7b),HX_("main",39,38,56,48)));
+            	HX_GC_STACKFRAME(&_hx_pos_3cb1ff7e3af8b400_7_main)
+HXLINE(   8)		 ::haxe::io::Bytes output =  ::sys::io::Process_obj::__alloc( HX_CTX ,HX_("git",12,84,4e,00),::Array_obj< ::String >::fromData( _hx_array_data_7b2af223_1,1))->_hx_stdout->readAll(null());
+HXLINE(   9)		::haxe::Log_obj::trace(output,hx::SourceInfo(HX_("Main.hx",05,5c,7e,08),9,HX_("src.Main",23,f2,2a,7b),HX_("main",39,38,56,48)));
             	}
 
 

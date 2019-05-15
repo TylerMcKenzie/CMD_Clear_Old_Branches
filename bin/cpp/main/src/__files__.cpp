@@ -5,7 +5,12 @@ namespace hx {
 const char *__hxcpp_all_files[] = {
 #ifdef HXCPP_DEBUGGER
 "/usr/share/haxe/std/cpp/_std/Std.hx",
+"/usr/share/haxe/std/cpp/_std/sys/io/Process.hx",
 "/usr/share/haxe/std/haxe/Log.hx",
+"/usr/share/haxe/std/haxe/io/Bytes.hx",
+"/usr/share/haxe/std/haxe/io/BytesBuffer.hx",
+"/usr/share/haxe/std/haxe/io/Eof.hx",
+"/usr/share/haxe/std/haxe/io/Input.hx",
 "?",
 "Main.hx",
 #endif
@@ -14,7 +19,12 @@ const char *__hxcpp_all_files[] = {
 const char *__hxcpp_all_files_fullpath[] = {
 #ifdef HXCPP_DEBUGGER
 "/usr/share/haxe/std/cpp/_std/Std.hx",
+"/usr/share/haxe/std/cpp/_std/sys/io/Process.hx",
 "/usr/share/haxe/std/haxe/Log.hx",
+"/usr/share/haxe/std/haxe/io/Bytes.hx",
+"/usr/share/haxe/std/haxe/io/BytesBuffer.hx",
+"/usr/share/haxe/std/haxe/io/Eof.hx",
+"/usr/share/haxe/std/haxe/io/Input.hx",
 "?",
 "/home/vagrant/code/release/tyler-stuff/haxe/haxe_cmd/clear_old_branches/src/Main.hx",
 #endif
@@ -24,7 +34,15 @@ const char *__hxcpp_all_classes[] = {
 #ifdef HXCPP_DEBUGGER
 "Std",
 "haxe.Log",
+"haxe.io.Bytes",
+"haxe.io.BytesBuffer",
+"haxe.io.Eof",
+"haxe.io.Input",
+"haxe.io.Output",
 "src.Main",
+"sys.io._Process.Stdin",
+"sys.io._Process.Stdout",
+"sys.io.Process",
 #endif
  0 };
 } // namespace hx
