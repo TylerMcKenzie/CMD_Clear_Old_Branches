@@ -36,6 +36,16 @@ class Main {
 			Sys.print("[LAST_UPDATE]: " + lastBranchCommit + "\n");
 			Sys.print("Delete this branch? [Y/N]: ");
 			var userInput = input.readLine();
+
+			if (userInput == "y" || userInput == "Y") {
+                Sys.print("Deleting branch (" + cleanBranch.branch + ")...\n");
+			    deleteBranch(cleanBranch.branch);
+			}
 		}
+    }
+
+    private static function deleteBranch(branch:String)
+    {
+        Sys.command("git", ["branch", "-d", branch]);
     }
 }
