@@ -18,9 +18,9 @@ class Main {
         for (dirtyBranch in dirtyBranches) {
             var branch = StringTools.trim(dirtyBranch);
             if (
-				dirtyBranch == "master" ||
-				dirtyBranch == "" ||
-				currentBranchRegexp.match(dirtyBranch)
+				branch == "master" ||
+				branch == "" ||
+				currentBranchRegexp.match(branch)
 			) {
                 continue;
             }
