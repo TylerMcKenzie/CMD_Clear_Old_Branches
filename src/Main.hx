@@ -1,21 +1,20 @@
 package src;
 
 import sys.io.Process;
+import haxe.io.Input;
 
 class Main {
-    private static var input = Sys.stdin();
+    private static var input:Input = Sys.stdin();
 
-    public static function main()
+    public static function main() : Void
     {
-        var branches:Array<String> = new Process("git", ["branch"]).stdout
-                                                                   .readAll()
-                                                                   .toString()
-                                                                   .split("\n");
+        var branches:Array<String> = getBranches();
 
         var currentBranchRegexp:EReg = ~/\*/;
 
         for (branch in branches) {
-            var branch = StringTools.trim(branch);
+            var branch:String = StringTools.trim(branch);
+
             if (
 				branch == "master" ||
 				branch == "" ||
@@ -24,26 +23,25 @@ class Main {
                 continue;
             }
 
-            var lastBranchCommit = new Process("git", ["log", "--pretty=format:\"%ad\"", "-1", branch]).stdout.readAll().toString();
+            var lastBranchCommit:String = new Process("git", ["log", "--pretty=format:\"%ad\"", "-1", branch]).stdout.readAll().toString();
 
-            Sys.print("[BRANCH]: " + branch + "\n");
+            Sys.print("\n[BRANCH]: " + branch + "\n");
             Sys.print("[LAST_UPDATE]: " + lastBranchCommit + "\n");
             Sys.print("Delete this branch? [Y/N]: ");
-            var userInput = input.readLine();
+            var userInput:String = input.readLine();
 
             if (userInput == "y" || userInput == "Y") {
-                Sys.print("Deleting branch (" + branch + ")...\n");
                 deleteBranch(branch);
             }
         }
     }
 
-    private static function getBranches(): Array<String>
+    private static function getBranches() : Array<String>
     {
         return new Process("git", ["branch"]).stdout.readAll().toString().split("\n");
     }
 
-    private static function deleteBranch(branch:String)
+    private static function deleteBranch(branch:String) : Void
     {
         Sys.command("git", ["branch", "-d", branch]);
     }
