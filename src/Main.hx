@@ -16,10 +16,10 @@ class Main {
             var branch:String = StringTools.trim(branch);
 
             if (
-				branch == "master" ||
-				branch == "" ||
-				currentBranchRegexp.match(branch)
-			) {
+                branch == "master" ||
+                branch == "" ||
+                currentBranchRegexp.match(branch)
+            ) {
                 continue;
             }
 
