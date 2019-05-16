@@ -43,6 +43,13 @@ class Main {
 
     private static function deleteBranch(branch:String) : Void
     {
-        Sys.command("git", ["branch", "-d", branch]);
+        if (Sys.command("git", ["branch", "-d", branch]) != 0) {
+            Sys.print("Would you like to force delete branch (" + branch + ")? [Y/n]: ");
+
+            var userInput:String = input.readLine();
+            if (userInput == "y" || userInput == "Y") {
+                Sys.command("git", ["branch", "-D", branch]);
+            }
+        }
     }
 }
