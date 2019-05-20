@@ -1,0 +1,6 @@
+-cp src/
+-dce full
+
+-hl bin/hl/main.hl
+
+-main src.Main
